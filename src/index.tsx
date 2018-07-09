@@ -94,10 +94,14 @@ import * as ReactDOM from 'react-dom';
 import App from './containers/App';
 
 import { createStore } from 'redux';
+import { persistStore } from 'redux-persist'
+import { PersistGate } from 'redux-persist/integration/react'
+
+import thunk, { ThunkMiddleware } from 'redux-thunk';
 
 import { Provider } from 'react-redux';
 
-import { apiToken } from './reducers/index';
+import rootReducer from './reducers/index';
 import { IStoreState } from './types/index';
 
 import { applyMiddleware, Dispatch, Middleware, MiddlewareAPI } from "redux";
@@ -124,14 +128,31 @@ function logger() {
   return loggerMiddleware
 }
 
-const store = createStore<IStoreState, any, any, any>(apiToken, {
-  apiToken: null
-}, applyMiddleware(logger()));
+// const thunkMiddleware = thunk as ThunkMiddleware<IStoreState, any>
+
+// const middlewares: [Middleware] = [
+//     logger(),
+//     thunk as ThunkMiddleware<IStoreState, any>
+// ]
 
 
+// // WHITELIST
+// const persistConfig = {
+//     key: 'root',
+//     storage: storageSession,
+//     whitelist: ['auth.apiToken'] // only navigation will be persisted
+// };
+
+// const persistedReducer = persistReducer(persistConfig, rootReducer)
+
+const store = createStore<IStoreState, any, any, any>(rootReducer, applyMiddleware(logger(), thunk as ThunkMiddleware<IStoreState, any>));
+
+const persistor = persistStore(store)
 
 ReactDOM.render(
     <Provider store={store}>
-        <App />
+        <PersistGate loading={null} persistor={persistor}>
+            <App />
+        </PersistGate>
     </Provider>, document.getElementById('root'));
 // registerServiceWorker();

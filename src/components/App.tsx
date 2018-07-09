@@ -22,7 +22,7 @@ const RootRedirect = ({location}: RouteProps) => (
 );
 
 const App = ({isSignedIn}: IAppProps) => {
-
+  console.log(isSignedIn);
     return (
         <Router>
           <div className="hello">

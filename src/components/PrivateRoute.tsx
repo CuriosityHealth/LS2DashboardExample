@@ -12,6 +12,7 @@ const PrivateRoute = ({isSignedIn, redirectPath, component: Component, ...rest }
 );
   
 const PrivateRender = (Component: any, isSignedIn: boolean, redirectPath: string) => {
+    console.log(isSignedIn)
     if (isSignedIn) {
         return (props: any) => {
             return <Component {...props}/>;

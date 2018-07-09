@@ -1,15 +1,19 @@
 import { connect } from 'react-redux';
-import SignIn from '../components/SignIn';
+import { Dispatch } from 'redux';
+
+import { signIn } from '../actionCreators';
+
+import SignIn, { ISignInProps } from '../components/SignIn';
 
 import { IStoreState } from '../types/index';
+
 
 const mapStateToProps = (state: IStoreState) => ({
     
 })
 
-// const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
-//     clearAPIToken: () => dispatch(actions.clearAPIToken()),
-//     setAPIToken: (token: string) => dispatch(actions.setAPIToken(token)),
-// })  
+const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
+    signIn: (username: string, password: string) => dispatch(signIn(username, password))
+})  
 
-export default connect<{}>(mapStateToProps)(SignIn);
+export default connect<ISignInProps>(mapStateToProps, mapDispatchToProps)(SignIn);

@@ -8,7 +8,7 @@ import Hello, { IHelloProps } from '../components/Hello';
 import { IStoreState } from '../types/index';
 
 const mapStateToProps = (state: IStoreState) => ({
-    apiToken: state.apiToken
+    apiToken: state.auth.apiToken
 })
 
 const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
