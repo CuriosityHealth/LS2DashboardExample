@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 // import { Dispatch } from 'redux';
 
 // import * as actions from '../actions/';
-import NavBar, { INavBarProps } from '../components/NavBar';
+import App, { IAppProps } from '../components/App';
 import { isSignedIn } from '../selectors';
 
 import { IStoreState } from '../types/index';
@@ -17,4 +17,4 @@ const mapStateToProps = (state: IStoreState) => ({
 //     setAPIToken: (token: string) => dispatch(actions.setAPIToken(token)),
 // })  
 
-export default connect<INavBarProps>(mapStateToProps)(NavBar);
+export default connect<IAppProps>(mapStateToProps)(App);

@@ -1,63 +1,46 @@
-import * as React from 'react';
+// import * as React from 'react';
 
-import { BrowserRouter as Router, Route } from "react-router-dom";
+// import { BrowserRouter as Router, Redirect, Route, RouteProps } from "react-router-dom";
 
-import NavBar from './containers/NavBar';
-
-import Hello from './containers/Hello';
-
-
-// this should contain the initial component
-// which will include the header and sub components
-// let's just try to get the nav bar working today
-
-import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+// import NavBar from './containers/NavBar';
+// import PrivateRoute from './containers/PrivateRoute';
+// import SignIn from './containers/SignIn';
+// import StudySummary from './containers/StudySummary';
+// // import Hello from './containers/Hello';
 
 
-import { apiToken } from './reducers/index';
-import { IStoreState } from './types/index';
+// // this should contain the initial component
+// // which will include the header and sub components
+// // let's just try to get the nav bar working today
 
-import { applyMiddleware, Dispatch, Middleware, MiddlewareAPI } from "redux";
+// // import { Provider } from 'react-redux';
+// // import { createStore } from 'redux';
 
-function logger() {
-  const loggerMiddleware: Middleware = ({ getState }: MiddlewareAPI) => (
-    next: Dispatch
-  ) => action => {
 
-    console.log('state before dispatch', getState())
+// // import { apiToken } from './reducers/index';
+// // import { IStoreState } from './types/index';
 
-    console.log('will dispatch', action)
 
-    // Call the next dispatch method in the middleware chain.
-    const returnValue = next(action)
 
-    console.log('state after dispatch', getState())
+// const RootRedirect = ({location}: RouteProps) => (
+//   <Redirect to={{
+//     pathname: "/home",
+//     state: { from: location }
+//   }} 
+//   />
+// );
+// const App = () => {
 
-    // This will likely be the action itself, unless
-    // a middleware further in chain changed it.
-    return returnValue
-  }
+//     return (
+//         <Router>
+//           <div className="hello">
+//             <NavBar />
+//             <Route exact={true} path="/" component={RootRedirect} />
+//             <PrivateRoute path="/home" component={StudySummary} />
+//             <Route path="/login" component={SignIn} />
+//           </div>
+//         </Router>
+//     );
+//   }
 
-  return loggerMiddleware
-}
-
-const store = createStore<IStoreState, any, any, any>(apiToken, {
-  apiToken: null
-}, applyMiddleware(logger()));
-  
-const App = () => {
-
-    return (
-      <Provider store={store}>
-        <Router>
-          <div className="hello">
-            <NavBar />
-            <Route exact={true} path="/" component={Hello} />
-          </div>
-        </Router>
-      </Provider>
-    );
-  }
-
-  export default App;
+//   export default App;

@@ -1,15 +1,10 @@
-
 import { connect } from 'react-redux';
-// import { Dispatch } from 'redux';
-
-// import * as actions from '../actions/';
-import NavBar, { INavBarProps } from '../components/NavBar';
-import { isSignedIn } from '../selectors';
+import SignIn from '../components/SignIn';
 
 import { IStoreState } from '../types/index';
 
 const mapStateToProps = (state: IStoreState) => ({
-    isSignedIn: isSignedIn(state)
+    
 })
 
 // const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
@@ -17,4 +12,4 @@ const mapStateToProps = (state: IStoreState) => ({
 //     setAPIToken: (token: string) => dispatch(actions.setAPIToken(token)),
 // })  
 
-export default connect<INavBarProps>(mapStateToProps)(NavBar);
+export default connect<{}>(mapStateToProps)(SignIn);
