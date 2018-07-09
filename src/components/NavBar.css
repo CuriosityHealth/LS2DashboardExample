@@ -1,0 +1,36 @@
+
+.ch-navbar {
+    /* background-color: ; */
+    min-height: 90px;
+  }
+
+  .ch-subheader {
+    width: 100%;
+    background-color: #5F636B;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .ch-subheader-text {
+    font-size: xx-large;
+    color: #FFFFFF;
+    text-align: center;
+  }
+  
+  .ch-navbar-group {
+    height: 100%;
+  }
+  
+  .ch-navbar-heading  {
+    font-size: xx-large;
+  }
+  
+  .ch-navbar-logo {
+    height: 60px;
+  }
+
+.account-image {
+    vertical-align: middle;
+    height: 45px;
+}
+  

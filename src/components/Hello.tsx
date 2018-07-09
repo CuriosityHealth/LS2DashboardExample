@@ -1,7 +1,9 @@
 
 import * as React from 'react';
 
-import LS2ResearcherAPIClient from '../api/LS2ResearcherAPIClient';
+// import LS2ResearcherAPIClient from '../api/LS2ResearcherAPIClient';
+
+import { Button, Intent, Spinner } from "@blueprintjs/core";
 
 export interface IHelloProps {
   // name: string;
@@ -31,21 +33,21 @@ export interface IHelloProps {
 
 class Hello extends React.Component<IHelloProps, {}> {
 
-  public componentDidMount() {
-    const baseURL = "http://localhost:8000";
-    const studyID = "15dfe694-1aef-4cf7-aafd-be27b26dbbb4";
-    const username = "";
-    const password = "";
-    LS2ResearcherAPIClient.signIn(baseURL, studyID, username, password).then((token) => {
+  // public componentDidMount() {
+  //   const baseURL = "http://localhost:8000";
+  //   const studyID = "15dfe694-1aef-4cf7-aafd-be27b26dbbb4";
+  //   const username = "";
+  //   const password = "";
+  //   LS2ResearcherAPIClient.signIn(baseURL, studyID, username, password).then((token) => {
 
-      // this.props.setAPIToken?(token);
+  //     // this.props.setAPIToken?(token);
 
-      if (this.props.setAPIToken) {
-        this.props.setAPIToken(token);
-      }
+  //     if (this.props.setAPIToken) {
+  //       this.props.setAPIToken(token);
+  //     }
 
-    });
-  }
+  //   });
+  // }
 
   public render() {
     // const { name, enthusiasmLevel = 1 } = this.props;
@@ -59,6 +61,8 @@ class Hello extends React.Component<IHelloProps, {}> {
 
     return (
       <div className="hello">
+        <Spinner intent={Intent.PRIMARY} />
+        <Button intent={Intent.SUCCESS} >button content</Button>
         <div className="greeting">
           Hello {name + getExclamationMarks(enthusiasmLevel)}
           <p>{ this.props.apiToken } </p>
