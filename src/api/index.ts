@@ -36,6 +36,8 @@ export function signIn(baseURL: string, studyID: string, username: string, passw
 
 }
 
+// export function fetchDatapoints(baseURL: string, authToken: string): 
+
 // class LS2ResearcherAPIClient {
 
 //     public static signIn(baseURL: string, studyID: string, username: string, password: string): Promise<string> {
